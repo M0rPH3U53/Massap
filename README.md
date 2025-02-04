@@ -12,7 +12,7 @@ Installation
 └──╼ $ sudo apt install masscan nmap
 ```
 &nbsp;
-⚠️ A executer en root
+A executer en root
 
 ```
 ┌─[parrot@parrot]─[~]
