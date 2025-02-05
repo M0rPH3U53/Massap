@@ -16,7 +16,7 @@ A executer en root
 
 ```
 ┌─[parrot@parrot]─[~]
-└──╼ $ sudo massap.sh
+└──╼ $ sudo sh massap.sh
 ```
 
 
