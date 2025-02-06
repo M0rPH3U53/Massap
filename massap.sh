@@ -41,7 +41,7 @@ else
     grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 > ${port}
 fi
 
-# Scan les ports d'apres les resultat de massap & genere un rapport
+# Scan les ports d'apres les resultat de masscan & genere un rapport
 nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX ${IP}-tcp.xml ${IP}
 
 # Converti le .xml en .html
