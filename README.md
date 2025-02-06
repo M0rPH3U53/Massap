@@ -11,7 +11,6 @@ Combinaisons de 2 outils de scanners de port
 ┌─[parrot@parrot]─[~]
 └──╼ $ sudo apt install masscan nmap
 ```
-&nbsp;
 # 👁️ Previsualisation
 
 ```
