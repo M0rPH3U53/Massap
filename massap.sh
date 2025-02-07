@@ -20,52 +20,73 @@ EOF
 
 ascii
 
+
+# Couleur ASCII
+BLEU='\e[34m'
+ROUGE='\033[0;31m'
+VERT='\033[0;32m'
+GRIS='\033[0;37m'
+RESET='\033[0m'
+BLANC='\033[1;37m'
+
+# Obtenir le nom de l'utilisateur non-root
+USER_HOME=$(eval echo ~$SUDO_USER)
+
+# Dossier pour les rapports
+REPORT_DIR="$USER_HOME/Massap"
+
 # Cree le dossier pour les rapports
-mkdir -p $HOME/Massap
+mkdir -p $REPORT_DIR
 
 # Config Reseau
-gateway='10.20.30.1'
-mac='AC:86:BD:5E:90:8C'
+gateway='192.168.56.1'
+mac='0a:00:27:00:00:00'
+
 
 mass='res_ports.txt'
 port='ports.txt'
 
-read -p 'Entrer une IP: ' IP
-read -p 'Entrer un rate: ' rate
+echo -ne "${ROUGE}[!]${RESET} ${BLANC}Scan IP:${RESET} "
+read IP
 
-echo -n "[+] Scan Massap ${IP}..."
+echo -ne "${ROUGE}[!]${RESET} ${BLANC}Rate:${RESET} "
+read rate
+echo " "
 
 # Scan les 65535 ports
-masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} > /dev/null 
+echo -ne "${VERT}[+]${RESET} ${BLANC}Scan Masscan${RESET} ${VERT}${IP}${RESET}..."
+masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} >/dev/null 2>&1
+echo -e "${BLEU}100%${RESET}"
 
 # Verifie si des ports sont ouvers
 if [ ! -s "${mass}" ]; then
-    echo "Aucun port ouvert"
+    echo "[-] Aucun port ouvert"
     exit 1
 else
-    grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 > ${port}
+    grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 >${port}
 fi
 
 # Scan les ports d'apres les resultat de masscan & genere un rapport
-nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX $HOME/Massap/${IP}-tcp.xml ${IP} > /dev/null
-
+echo -ne "${VERT}[+]${RESET} ${BLANC}Scan Nmap${RESET} ${VERT}${IP}${RESET}..."
+nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX $REPORT_DIR/${IP}-tcp.xml ${IP} >/dev/null 2>&1
+echo -e "${BLEU}100%${RESET}"
 
 # Converti le .xml en .html
-xsltproc $HOME/Massap/${IP}-tcp.xml > $HOME/Massap/${IP}-tcp.html
+xsltproc $REPORT_DIR/${IP}-tcp.xml > $REPORT_DIR/${IP}-tcp.html
 
 # Supprime les fichier txt apres scan
 rm ${port} ${mass}
 
-echo "terminer"
-
 # Affiche le rapport nmap
-view_rapport() {
+view_rapports() {
+	
+    echo " "
+    printf "==========================================================\n"
+    echo -e "|${BLANC}                         Rapports                       ${RESET}|"
+    printf "==========================================================\n"
+    printf "| %-00s:%-49s |\n" "Nmap" "$REPORT_DIR/${IP}-tcp.html"
+    printf "==========================================================\n"
 
-    echo "============================================================="
-   echo "|                        Rapports                             |"
-    echo "============================================================="
-   echo "| Massap: $HOME/Massap/${IP}-tcp.html                          |"
-    echo "============================================================="
 }
 
-view_rapport
+view_rapports
