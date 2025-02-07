@@ -20,6 +20,7 @@ EOF
 
 ascii
 
+# Cree le dossier pour les rapports
 mkdir -p $HOME/Massap/
 
 # Config Reseau
