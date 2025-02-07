@@ -58,7 +58,7 @@ rm ${port} ${mass}
 echo "terminer"
 
 
-view_rapports() {
+view_rapport() {
 
     echo "============================================================="
    echo "|                        Rapports                             |"
@@ -67,4 +67,4 @@ view_rapports() {
     echo "============================================================="
 }
 
-view_rapports
+view_rapport
