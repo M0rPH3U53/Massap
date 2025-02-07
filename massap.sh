@@ -32,10 +32,10 @@ port='ports.txt'
 read -p 'Entrer une IP: ' IP
 read -p 'Entrer un rate: ' rate
 
-echo -n "[+] Scan Massap..."
+echo -n "[+] Scan Massap ${IP}..."
 
 # Scan les 65535 ports
-masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass}
+masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} > /dev/null 
 
 # Verifie si des ports sont ouvers
 if [ ! -s "${mass}" ]; then
@@ -46,7 +46,7 @@ else
 fi
 
 # Scan les ports d'apres les resultat de masscan & genere un rapport
-nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX $HOME/Massap/${IP}-tcp.xml ${IP}
+nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX $HOME/Massap/${IP}-tcp.xml ${IP} > /dev/null
 
 
 # Converti le .xml en .html
@@ -57,4 +57,14 @@ rm ${port} ${mass}
 
 echo "terminer"
 
-echo "Nmap : $HOME/Massap/${IP}-tcp.html
+
+view_rapports() {
+
+    echo "============================================================="
+   echo "|                        Rapports                             |"
+    echo "============================================================="
+   echo "| Nmap : $HOME/Massap/${IP}-tcp.html                          |"
+    echo "============================================================="
+}
+
+view_rapports
