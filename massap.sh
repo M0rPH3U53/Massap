@@ -1,6 +1,6 @@
 #!/bin/bash
 
-titre() {
+ascii() {
     cat <<"EOF"
 
    *                                
@@ -18,7 +18,7 @@ by M0rPH3U53
 EOF
 }
 
-titre
+ascii
 
 mkdir -p $HOME/Massap/
 
