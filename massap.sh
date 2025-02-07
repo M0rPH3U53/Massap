@@ -57,13 +57,13 @@ rm ${port} ${mass}
 
 echo "terminer"
 
-
+# Affiche le rapport nmap
 view_rapport() {
 
     echo "============================================================="
    echo "|                        Rapports                             |"
     echo "============================================================="
-   echo "| Nmap : $HOME/Massap/${IP}-tcp.html                          |"
+   echo "| Massap: $HOME/Massap/${IP}-tcp.html                          |"
     echo "============================================================="
 }
 
