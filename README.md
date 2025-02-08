@@ -15,7 +15,7 @@ Combinaisons de 2 outils de scanners de port
 
 ```
 ┌─[parrot@parrot]─[~/Documents]
-└──╼ $sudo sh test.sh
+└──╼ $sudo sh massap.sh
 
    *                                
  (  `                               
