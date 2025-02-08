@@ -60,7 +60,7 @@ echo -e "${BLEU}100%${RESET}"
 
 # Verifie si des ports sont ouvers
 if [ ! -s "${mass}" ]; then
-    echo "[-] Aucun port ouvert"
+    echo "${ROUGE}[-]${RESET} ${BLANC}Aucun port ouvert${RESET}"
     exit 1
 else
     grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 >${port}
