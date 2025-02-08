@@ -29,8 +29,8 @@ Combinaisons de 2 outils de scanners de port
 
 by M0rPH3U53
       
-[!] Scan IP: 192.168.56.74
-[!] Rate: 1000
+[i] Scan IP: 192.168.56.74
+[i] Rate: 1000
  
 [+] Scan Masscan 192.168.56.74...100%
 [+] Scan Nmap 192.168.56.74...100%
