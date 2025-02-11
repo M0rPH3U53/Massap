@@ -72,6 +72,7 @@ nmap -sS -A -sC -p $(cat ${ports} | tr '\n' ',') --script vuln -v -oX ${REPORT_D
 echo -e "${JAUNE}100%${RESET}"
 
 # Affiche les ports ouverts
+echo " "
 grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$//tcp open/'
 
 # Converti le .xml en .html
