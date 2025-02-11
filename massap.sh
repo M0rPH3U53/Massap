@@ -44,7 +44,7 @@ gateway='192.168.56.1'
 mac='0a:00:27:00:00:00'
 
 mass='res_ports.txt'
-port='ports.txt'
+ports='ports.txt'
 
 echo -ne "${BLEU}[i]${RESET} ${BLANC}Scan IP:${RESET} "
 read IP
@@ -63,26 +63,29 @@ if [ ! -s "${mass}" ]; then
     echo -e "${ROUGE}[-]${RESET} ${BLANC}Aucun port ouvert${RESET}"
     exit 1
 else
-    grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 >${port}
+    grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 > ${ports}
 fi
 
 # Scan les ports d'apres les resultat de Masscan & genere un rapport
 echo -ne "${VERT}[+]${RESET} ${BLANC}Scan Nmap${RESET} ${VERT}${IP}${RESET}..."
-nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
+nmap -sS -A -sC -p $(cat ${ports} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
+
+# Affiche les ports ouverts
+grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$//tcp open/'
 
 # Converti le .xml en .html
 xsltproc ${REPORT_DIR}/${IP}-tcp.xml > ${REPORT_DIR}/${IP}-tcp.html
 
 # Supprime les fichier txt apres scan
-rm ${port} ${mass}
+rm ${ports} ${mass}
 
 # Affiche le chemin du rapport nmap
 view_rapports() {
 	
     echo " "
     printf "==========================================================\n"
-    echo -e "|${BLANC}                         Rapports                       ${RESET}|"
+    echo -e "|${BLANC}                         Rapport                       ${RESET}|"
     printf "==========================================================\n"
     printf "| %-00s:%-49s |\n" "Nmap" "${REPORT_DIR}/${IP}-tcp.html"
     printf "==========================================================\n"
