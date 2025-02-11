@@ -30,7 +30,7 @@ JAUNE='\e[0;33m'
 RESET='\033[0m'
 BLANC='\033[1;37m'
 
-# Obtenir le nom de l'utilisateur non-root
+# Obtenir le nom de l'utilisateur non root
 USER_HOME=$(eval echo ~$SUDO_USER)
 
 # Dossier pour les rapports
@@ -43,7 +43,6 @@ mkdir -p ${REPORT_DIR}
 gateway='192.168.56.1'
 mac='0a:00:27:00:00:00'
 
-
 mass='res_ports.txt'
 port='ports.txt'
 
@@ -54,9 +53,9 @@ echo -ne "${BLEU}[i]${RESET} ${BLANC}Rate:${RESET} "
 read rate
 echo " "
 
-# Scan les 65535 ports
+# Scan les 65535 ports avec Masscan
 echo -ne "${VERT}[+]${RESET} ${BLANC}Scan Masscan${RESET} ${VERT}${IP}${RESET}..."
-masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} >/dev/null 2>&1
+masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
 
 # Verifie si des ports sont ouvers
@@ -67,9 +66,9 @@ else
     grep "open" ${mass} | awk '{print $7}' | cut -d'/' -f1 >${port}
 fi
 
-# Scan les ports d'apres les resultat de masscan & genere un rapport
+# Scan les ports d'apres les resultat de Masscan & genere un rapport
 echo -ne "${VERT}[+]${RESET} ${BLANC}Scan Nmap${RESET} ${VERT}${IP}${RESET}..."
-nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} >/dev/null 2>&1
+nmap -sS -A -sC -p $(cat ${port} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
 
 # Converti le .xml en .html
@@ -78,7 +77,7 @@ xsltproc ${REPORT_DIR}/${IP}-tcp.xml > ${REPORT_DIR}/${IP}-tcp.html
 # Supprime les fichier txt apres scan
 rm ${port} ${mass}
 
-# Affiche le rapport nmap
+# Affiche le chemin du rapport nmap
 view_rapports() {
 	
     echo " "
