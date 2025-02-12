@@ -73,7 +73,7 @@ echo -e "${JAUNE}100%${RESET}"
 
 # Affiche les ports ouverts
 echo " "
-grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$//tcp open/'
+grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$/\/tcp open/'
 #grep "open" ${mass} | awk '{print "'"${GREEN}"'[+]'"${RESET}"' '"${WHITE}"' $7 "'"${RESET}"'"}' | cut -d'/' -f1 | sed 's/$//tcp open/'
 
 # Converti le .xml en .html
