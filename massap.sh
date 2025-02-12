@@ -73,8 +73,8 @@ echo -e "${JAUNE}100%${RESET}"
 
 # Affiche les ports ouverts
 echo " "
-grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$/\/tcp open/'
-#grep "open" ${mass} | awk '{print "'"${GREEN}"'[+]'"${RESET}"' '"${WHITE}"' $7 "'"${RESET}"'"}' | cut -d'/' -f1 | sed 's/$//tcp open/'
+#grep "open" ${mass} | awk '{print "[+] " $7}' | cut -d'/' -f1 | sed 's/$/\/tcp open/'
+grep "open" ${mass} | awk '{print "'"${VERT}"'[+]'"${RESET}"''"${BLANC}"' " $7 "'"${RESET}"'"}' | cut -d'/' -f1 | awk '{print $0 "'"${BLANC}"'/tcp open'"${RESET}"'"}'
 
 # Converti le .xml en .html
 xsltproc ${REPORT_DIR}/${IP}-tcp.xml > ${REPORT_DIR}/${IP}-tcp.html
