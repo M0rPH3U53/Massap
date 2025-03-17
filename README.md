@@ -11,7 +11,7 @@ Combinaisons de 2 outils de scanners de port
 ┌─[parrot@parrot]─[~]
 └──╼ $ sudo apt install masscan nmap xsltproc
 ```
-# Config reseau
+# ⚠️ Config reseau
 A modifier selon vos parametre reseau
 
 ```
