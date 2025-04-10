@@ -8,7 +8,7 @@ Combinaisons de 2 outils de scanners de port
 # 🔧 Installation
 
 ```
-┌─[m0rph3u53@parrot]─[~]
+┌─[m0rph3u5@parrot]─[~]
 └──╼ $ sudo apt install masscan nmap xsltproc
 ```
 # ⚠️ Config reseau
