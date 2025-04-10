@@ -23,7 +23,7 @@ mac='0a:00:27:00:00:00'
 # 👁️ Previsualisation
 
 ```
-┌─[m0rph3u53@parrot]─[~/Documents]
+┌─[m0rph3u5@parrot]─[~/Documents]
 └──╼ $sudo sh massap.sh
 
    *                                
