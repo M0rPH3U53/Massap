@@ -1,9 +1,5 @@
 # Massap
 
-![image](https://github.com/user-attachments/assets/bce5b63b-c351-4a7f-bcbe-1162481924cd)
-
-
-
 Combinaisons de 2 outils de scanners de port
 
 <span style="color: #dddddd;">👁️</span> Nmap  
