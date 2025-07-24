@@ -54,7 +54,7 @@ read rate
 echo " "
 
 # Scan les 65535 ports avec Masscan
-echo -ne "${VERT}[+]${RESET} ${BLANC}Masscan${RESET} ${VERT}${IP}${RESET}..."
+echo -ne "🔥 ${VERT}[+]${RESET} ${BLANC}Masscan${RESET} ${VERT}${IP}${RESET}..."
 masscan ${IP} -p- --rate ${rate} --router-ip ${gateway} --router-mac ${mac} -oG ${mass} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
 
@@ -67,7 +67,7 @@ else
 fi
 
 # Scan les ports d'apres les resultat de Masscan & genere un rapport
-echo -ne "${VERT}[+]${RESET} ${BLANC}Nmap${RESET} ${VERT}${IP}${RESET}..."
+echo -ne "👁️ ${VERT}[+]${RESET} ${BLANC}Nmap${RESET} ${VERT}${IP}${RESET}..."
 nmap -sS -A -sC -p $(cat ${ports} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
 
