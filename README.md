@@ -21,7 +21,7 @@ gateway='192.168.56.1'
 mac='0a:00:27:00:00:00'
 ```
 
-# 👁️ Previsualisation
+# 👁️ Demo
 
 ```
 ┌─[m0rph3u5@parrot]─[~/Documents]
