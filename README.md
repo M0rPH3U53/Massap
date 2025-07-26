@@ -24,11 +24,3 @@ mac='0a:00:27:00:00:00'
 # 👁️ Demo
 
 https://github.com/user-attachments/assets/e38cab33-d284-4067-95c5-b75f14bccd1c
-
-# Rapport Nmap
-
-
-
-
-
-
