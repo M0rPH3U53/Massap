@@ -46,7 +46,7 @@ mac='0a:00:27:00:00:00'
 mass='res_ports.txt'
 ports='ports.txt'
 
-echo -ne "${BLEU}[i]${RESET} ${BLANC}Scan IP:${RESET} "
+echo -ne "${BLEU}[i]${RESET} ${BLANC}IP:${RESET} "
 read IP
 
 echo -ne "${BLEU}[i]${RESET} ${BLANC}Rate:${RESET} "
