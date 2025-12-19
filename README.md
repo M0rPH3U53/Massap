@@ -6,13 +6,13 @@ Combinaisons de 2 outils de scanners de port
 <span style="color: #dddddd;">👁️</span> Nmap  
 <span style="color: #dddddd;">🔥</span> Masscan
 
-# 🔧 Installation d'outils & emoji
+## 🚀 Installation d'outils & emoji
 
 ```
 ┌─[m0rph3u5@parrot]─[~]
 └──╼ $ sudo apt install masscan nmap xsltproc fonts-noto-color-emoji
 ```
-# ⚠️ Config reseau
+## ⚠️ Config reseau
 A modifier selon vos parametre reseau
 
 ```
@@ -21,6 +21,6 @@ gateway='192.168.56.1'
 mac='0a:00:27:00:00:00'
 ```
 
-# 👁️ Demo
+## 👁️ Demo
 
 https://github.com/user-attachments/assets/e38cab33-d284-4067-95c5-b75f14bccd1c
