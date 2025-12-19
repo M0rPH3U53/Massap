@@ -6,7 +6,7 @@ Combinaisons de 2 outils de scanners de port
 <span style="color: #dddddd;">👁️</span> Nmap  
 <span style="color: #dddddd;">🔥</span> Masscan
 
-## 🚀 Installation d'outils & emoji
+## 🛠️ Installation d'outils & emoji
 
 ```
 ┌─[m0rph3u5@parrot]─[~]
