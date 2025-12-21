@@ -68,7 +68,7 @@ fi
 
 # Scan les ports d'apres les resultat de Masscan & genere un rapport
 echo -ne "👁️ ${VERT}[+]${RESET} ${BLANC}Nmap${RESET} ${VERT}${IP}${RESET}..."
-nmap -sS -A -sC -p $(cat ${ports} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
+nmap -sS -A -p $(cat ${ports} | tr '\n' ',') --script vuln -v -oX ${REPORT_DIR}/${IP}-tcp.xml ${IP} > /dev/null 2>&1
 echo -e "${JAUNE}100%${RESET}"
 
 # Affiche les ports ouverts
