@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ascii() {
-    cat <<"EOF"
+# Banniere
+cat <<"EOF"
 
    *                                
  (  `                               
@@ -16,10 +16,6 @@ by M0rPH3U53
 
       
 EOF
-}
-
-ascii
-
 
 # Couleur ASCII
 BLEU='\033[34m'
